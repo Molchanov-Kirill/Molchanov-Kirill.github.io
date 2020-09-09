@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
       el: '.reviews__pagination',
     },
   });
-  
+
   DG.then(function() {
     DG.map('map', {
         center: [54.98, 82.89],
@@ -30,4 +30,3 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflowY = '';
   });
 });
-
