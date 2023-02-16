@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="onload();">
+    <h1 align=center>Login Form</h1>
+    <div class="container" align="center">
+        <div class="row align-items-center">
+            <form action="/submit" method="GET">
+
+                <div class="col-xs-12 col-md-6">
+                    <label class="form-label" for="email_form">Email</label>
+                    <input name="email" type="email" id="email_form" class="form-control" />
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                    <label class="form-label" for="password_form">Password</label>
+                    <input name="password" type="password" id="password_form" class="form-control"/>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div id = "sign_in_button" align="center"><input type="button" class="btn btn-outline-secondary btn-lg" value="Sign in" onclick="sign()"/></div>
+</body>
+</html>
+
+<script>
+    let user_id, password, data;
+    let url = 'http://localhost:8080';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const responseType = urlParams.get('response_type');
+
+    function onload(){
+        user_id = document.getElementById('email_form');
+        password = document.getElementById ('password_form');
+    }
+
+    async function sign(){
+        if (responseType == "code") {
+            sendCredentialsForYandex();
+        } else {
+            let token = await sendCredentials();
+        }
+        
+        console.log(token)
+    }
+
+    async function sendCredentials() {
+
+        data = {user_id: user_id.value, password: password.value};
+
+        let res = await fetch(url + "/auth", {
+            method: 'POST',
+            body: JSON.stringify(data),
+        })
+        return await res.json();
+    }
+
+
+    async function sendCredentialsForYandex() {
+        data = {user_id: user_id.value, password: password.value};
+
+        urlWithParams = url + "/code?" 
+                            + "state=" + urlParams.get('state') +
+                            + "&redirect_uri=" + urlParams.get('redirect_uri') +
+                            + "&client_id=" + urlParams.get('client_id') +
+                            + "&scope=" + urlParams.get('scope');
+
+        let res = await fetch(encodeURI(urlWithParams), {
+            method: 'POST',
+            body: JSON.stringify(data),
+        });
+
+    }
+</script>
