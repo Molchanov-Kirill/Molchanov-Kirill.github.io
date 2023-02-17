@@ -55,7 +55,7 @@
 
     async function sendCredentials() {
 
-        data = {user_id: user_id.value, password: password.value};
+        data = {login: user_id.value, password: password.value};
 
         let res = await fetch(url + "/auth", {
             method: 'POST',
