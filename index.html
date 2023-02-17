@@ -72,10 +72,9 @@
         console.log(urlParams.get('scope'))
 
         urlWithParams = url + "/code?" 
-                            + "state=" + urlParams.get('state') +
-                            + "&redirect_uri=" + urlParams.get('redirect_uri') +
-                            + "&client_id=" + urlParams.get('client_id') +
-                            + "&scope=" + urlParams.get('scope');
+                            + "state=" + urlParams.get('state')
+                            + "&redirect_uri=" + urlParams.get('redirect_uri')
+                            + "&client_id=" + urlParams.get('client_id');
         
         console.log(encodeURI(urlWithParams))
 
