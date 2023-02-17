@@ -72,6 +72,8 @@
                             + "&redirect_uri=" + urlParams.get('redirect_uri') +
                             + "&client_id=" + urlParams.get('client_id') +
                             + "&scope=" + urlParams.get('scope');
+        
+        console.log(encodeURI(urlWithParams))
 
         let res = await fetch(encodeURI(urlWithParams), {
             method: 'POST',
