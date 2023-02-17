@@ -46,7 +46,9 @@
     async function sign(){
         if (responseType == "code") {
             let redir = sendCredentialsForYandex();
-            window.location.href = redir
+            
+            console.log(redir)
+            //window.location.href = redir
         } else {
             let token = await sendCredentials();
             console.log(token)
