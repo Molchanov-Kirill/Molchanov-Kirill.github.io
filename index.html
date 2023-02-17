@@ -66,6 +66,10 @@
 
     async function sendCredentialsForYandex() {
         data = {login: user_id.value, password: password.value};
+        
+        console.log(urlParams.get('redirect_uri'))
+        console.log(urlParams.get('client_id'))
+        console.log(urlParams.get('scope'))
 
         urlWithParams = url + "/code?" 
                             + "state=" + urlParams.get('state') +
