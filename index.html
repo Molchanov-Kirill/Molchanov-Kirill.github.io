@@ -48,9 +48,8 @@
             sendCredentialsForYandex();
         } else {
             let token = await sendCredentials();
+            console.log(token)
         }
-        
-        console.log(token)
     }
 
     async function sendCredentials() {
