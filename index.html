@@ -82,6 +82,7 @@
             method: 'POST',
             body: JSON.stringify(data),
         })
-        .then(link => window.location.replace(link.text()))
+        .then(response => response.text())
+        .then(link => window.location.replace(link))
     }
 </script>
