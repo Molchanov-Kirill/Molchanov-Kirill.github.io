@@ -44,10 +44,7 @@
 
     async function sign(){
         if (responseType == "code") {
-            let redir = sendCredentialsForYandex();
-            
-            console.log(redir)
-//             window.location.replace(redir)
+            sendCredentialsForYandex();
         } else {
             let token = await sendCredentials();
             window.localStorage.setItem("token", token.jwt)
@@ -84,7 +81,7 @@
         let res = await fetch(encodeURI(urlWithParams), {
             method: 'POST',
             body: JSON.stringify(data),
-        });
-        return res;
+        })
+        .then(link => window.location.replace(link))
     }
 </script>
