@@ -47,7 +47,7 @@
             let redir = sendCredentialsForYandex();
             
             console.log(redir)
-            window.location.replace(redir)
+//             window.location.replace(redir)
         } else {
             let token = await sendCredentials();
             window.localStorage.setItem("token", token.jwt)
