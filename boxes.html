@@ -30,12 +30,12 @@
 
     async function onload() {
         res = await sendBoxRequest()
-        clientIdInput = document.querySelector(".client_id")
         console.log(window.localStorage.getItem("token"))
         
     }
 
     async function sendAddBox() {
+        clientIdInput = document.querySelector(".client_id")
         clientId = clientIdInput.value
         fetch(url + `/user/box/${client_id}/add`, {method: "POST"})
     }
