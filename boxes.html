@@ -38,7 +38,6 @@
     async function sendAddBox() {
         clientId = clientIdInput.value
         fetch(url + `/user/box/${client_id}/add`, {method: "POST"})
-            .then(location.reload())
     }
     
     async function sendBoxRequest() {
