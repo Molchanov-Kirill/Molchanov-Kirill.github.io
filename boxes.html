@@ -49,8 +49,7 @@
         let res = await fetch(url + "/user/box", {
             method: "GET",
             headers: {
-                "Authorization": "Bearer " + window.localStorage.getItem("token"),
-                "Content-Type": "application/json",
+                "Authorization": "Bearer " + window.localStorage.getItem("token")
             }
         })
         .then(res => res.json())
