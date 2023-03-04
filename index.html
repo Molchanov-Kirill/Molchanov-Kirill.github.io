@@ -59,6 +59,7 @@
         let res = await fetch(url + "/auth", {
             method: 'POST',
             body: JSON.stringify(data),
+            "mode": "no-cors", 
         })
         return await res.json();
     }
@@ -81,6 +82,7 @@
         let res = await fetch(encodeURI(urlWithParams), {
             method: 'POST',
             body: JSON.stringify(data),
+            "mode": "no-cors", 
         })
         .then(response => response.text())
         .then(link => window.location.replace(link))
