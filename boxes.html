@@ -41,7 +41,8 @@
             method: "POST",
             headers: {
                 "Authorization": "Bearer " + window.localStorage.getItem("token")
-            } 
+            },
+            "mode": "no-cors", 
         })
     }
     
@@ -50,7 +51,8 @@
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + window.localStorage.getItem("token")
-            }
+            },
+            "mode": "no-cors", 
         })
         .then(res => res.json())
         .then(res => {
