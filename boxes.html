@@ -47,7 +47,7 @@
     
     async function sendBoxRequest() {
         let res = await fetch(url + "/user/box", {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Authorization": "Bearer " + window.localStorage.getItem("token")
             },
