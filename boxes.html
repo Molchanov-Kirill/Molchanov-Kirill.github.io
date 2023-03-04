@@ -53,82 +53,81 @@
             },
         })
         .then(res => res.json())
-        .then(res => console.log(res))
-//         .then(res => {
-//             console.log(res)
-//             let rootElem = document.querySelector(".box-list")
+        .then(res => {
+            console.log(res)
+            let rootElem = document.querySelector(".box-list")
 
-//             for (box of res) {
-//                 let boxElem = document.createElement('div')
-//                 boxElem.classList = ['box']
-//                 let boxTitle = document.createElement('h3')
-//                 boxTitle.innerText = "Box ID: " + box.Id
-//                 boxTitle.classList = ['box__title']
-//                 let boxInfo = document.createElement('div')
-//                 boxInfo.classList = ['box__info']
+            for (box of res) {
+                let boxElem = document.createElement('div')
+                boxElem.classList = ['box']
+                let boxTitle = document.createElement('h3')
+                boxTitle.innerText = "Box ID: " + box.Id
+                boxTitle.classList = ['box__title']
+                let boxInfo = document.createElement('div')
+                boxInfo.classList = ['box__info']
                 
-//                 boxElem.appendChild(boxTitle)
-//                 boxElem.appendChild(boxInfo)
-//                 rootElem.appendChild(boxElem)
+                boxElem.appendChild(boxTitle)
+                boxElem.appendChild(boxInfo)
+                rootElem.appendChild(boxElem)
 
-//                 for (item of box["Items"]) {
-//                     let itemElem = document.createElement('div')
-//                     itemElem.classList = ["item"]
-//                     itemElem.innerHTML = `<div class="item__row">
-//                                             <h3 class="item__prop-name">Name:</h3>
-//                                             <div class="item__prop">${item.name}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Type:</h3>
-//                                             <div class="item__prop">${item.type}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Human name:</h3>
-//                                             <div class="item__prop">${item.human_name}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Changed:</h3>
-//                                             <div class="item__prop">${item.changed}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Checked:</h3>
-//                                             <div class="item__prop">${item.checked}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Value:</h3>
-//                                             <div class="item__prop">${item.value}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">RawValue:</h3>
-//                                             <div class="item__prop">${item.raw_value}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">FormattedValue:</h3>
-//                                             <div class="item__prop">${item.formatted_value}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Good:</h3>
-//                                             <div class="item__prop">${item.good}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">UI:</h3>
-//                                             <div class="item__prop">${item.ui}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Tags:</h3>
-//                                             <div class="item__prop">${item.tags}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Groups:</h3>
-//                                             <div class="item__prop">${item.groups}</div>
-//                                         </div>
-//                                         <div class="item__row">
-//                                             <h3 class="item__prop-name">Meta:</h3>
-//                                             <div class="item__prop">${item.meta}</div>
-//                                         </div>`
-//                     boxInfo.appendChild(itemElem)
-//                 }
-//             }
-//         })
+                for (item of box["Items"]) {
+                    let itemElem = document.createElement('div')
+                    itemElem.classList = ["item"]
+                    itemElem.innerHTML = `<div class="item__row">
+                                            <h3 class="item__prop-name">Name:</h3>
+                                            <div class="item__prop">${item.name}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Type:</h3>
+                                            <div class="item__prop">${item.type}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Human name:</h3>
+                                            <div class="item__prop">${item.human_name}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Changed:</h3>
+                                            <div class="item__prop">${item.changed}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Checked:</h3>
+                                            <div class="item__prop">${item.checked}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Value:</h3>
+                                            <div class="item__prop">${item.value}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">RawValue:</h3>
+                                            <div class="item__prop">${item.raw_value}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">FormattedValue:</h3>
+                                            <div class="item__prop">${item.formatted_value}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Good:</h3>
+                                            <div class="item__prop">${item.good}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">UI:</h3>
+                                            <div class="item__prop">${item.ui}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Tags:</h3>
+                                            <div class="item__prop">${item.tags}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Groups:</h3>
+                                            <div class="item__prop">${item.groups}</div>
+                                        </div>
+                                        <div class="item__row">
+                                            <h3 class="item__prop-name">Meta:</h3>
+                                            <div class="item__prop">${item.meta}</div>
+                                        </div>`
+                    boxInfo.appendChild(itemElem)
+                }
+            }
+        })
     }
 </script>
