@@ -42,7 +42,6 @@
             headers: {
                 "Authorization": "Bearer " + window.localStorage.getItem("token")
             },
-            "mode": "no-cors", 
         })
     }
     
@@ -52,7 +51,6 @@
             headers: {
                 "Authorization": "Bearer " + window.localStorage.getItem("token")
             },
-            "mode": "no-cors", 
         })
         .then(res => res.json())
         .then(res => {
