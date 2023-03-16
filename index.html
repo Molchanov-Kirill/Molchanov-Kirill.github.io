@@ -65,24 +65,30 @@
 
 
     async function sendCredentialsForYandex() {
-        data = {login: user_id.value, password: password.value};
+        data = {
+            "login": user_id.value, 
+            "password": password.value,
+            "client_id": urlParams.get('client_id'),
+            "redirect_uri": urlParams.get('redirect_uri'),
+            "client_id":  urlParams.get('client_id'),
+            "state": urlParams.get('state'),
+            "response_type": "code",
+        };
+
+        const FD = new FormData();
+        for (const [name, value] of Object.entries(data)) {
+            FD.append(name, value);
+        }
         
         console.log(urlParams.get('redirect_uri'))
         console.log(urlParams.get('client_id'))
         console.log(urlParams.get('scope'))
 
-        urlWithParams = url + "/code?" 
-                            + "state=" + urlParams.get('state')
-                            + "&redirect_uri=" + urlParams.get('redirect_uri')
-                            + "&client_id=" + urlParams.get('client_id');
-        
-        console.log(encodeURI(urlWithParams))
-
-        let res = await fetch(encodeURI(urlWithParams), {
+        let res = await fetch(url + "/code", {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: FD,
         })
-        .then(response => response.text())
-        .then(link => window.location.replace(link))
+        .then(response => console.log(response))
+        //.then(link => window.location.replace(link))
     }
 </script>
