@@ -16,7 +16,7 @@ window.onload = function() {
            response_type: 'token',
            redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
         },
-        'http://194.87.93.190:8080', {
+        'https://molchanov-kirill.github.io', {
            view: 'button',
            parentId: 'signup-form',
            buttonView: 'main',
