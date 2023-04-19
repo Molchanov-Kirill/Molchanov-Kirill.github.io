@@ -9,11 +9,11 @@ window.onload = function() {
     password = document.getElementById ('password_form');
 
     window.YaAuthSuggest.init({
-        client_id: 'client_id',
+        client_id: '58b5439db67e41348837a81ee7c2ae58',
            response_type: 'token',
-           redirect_uri: 'https://examplesite.com/suggest/token'
+           redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
         },
-        'https://examplesite.com', {
+        'https://molchanov-kirill.github.io', {
            view: 'button',
            parentId: 'login-form',
            buttonView: 'main',
