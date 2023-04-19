@@ -2,93 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>Sign In</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body onload="onload();">
-    <h1 align=center>Login Form</h1>
-    <div class="container" align="center">
-        <div class="row align-items-center">
-            <form action="/submit" method="GET">
+<body>
+    <div class="container">
+            <form class="form-signin w-100 m-auto" id="login-form">
+                <h1 class="h3 mb-3 fw-normal text-center">Sign In</h1>
 
-                <div class="col-xs-12 col-md-6">
-                    <label class="form-label" for="email_form">Email</label>
-                    <input name="email" type="email" id="email_form" class="form-control" />
+                <div class="mb-3">
+                    <label for="login_form">Login or Email</label>
+                    <input name="login" type="email" id="login_form" class="form-control" />
                 </div>
-
-                <div class="col-xs-12 col-md-6">
-                    <label class="form-label" for="password_form">Password</label>
+                <div class="mb-4">
+                    <label for="password_form">Password</label>
                     <input name="password" type="password" id="password_form" class="form-control"/>
                 </div>
-
+                <div id ="sign_in_button" class="mb-4" align="center">
+                    <input type="button" class="w-100 btn btn-lg btn-primary" value="Sign in" onclick="sign()"/>
+                </div>
+                <div id="g_id_onload"
+                    data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                    data-login_uri="https://your.domain/your_login_endpoint"
+                    data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin mb-2"
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="sign_in_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left">
+                </div> 
             </form>
-        </div>
     </div>
-    <div id = "sign_in_button" align="center"><input type="button" class="btn btn-outline-secondary btn-lg" value="Sign in" onclick="sign()"/></div>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
-
-<script>
-    let user_id, password, data;
-    let url = 'https://a3d7-89-223-83-123.eu.ngrok.io';
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const responseType = urlParams.get('response_type');
-
-    function onload(){
-        user_id = document.getElementById('email_form');
-        password = document.getElementById ('password_form');
-    }
-
-    async function sign(){
-        if (responseType == "code") {
-            sendCredentialsForYandex();
-        } else {
-            let token = await sendCredentials();
-            window.localStorage.setItem("token", token.jwt)
-            window.location.replace("/boxes.html")
-        }
-    }
-
-    async function sendCredentials() {
-
-        data = {login: user_id.value, password: password.value};
-
-        let res = await fetch(url + "/auth", {
-            method: 'POST',
-            body: JSON.stringify(data),
-        })
-        return await res.json();
-    }
-
-
-    async function sendCredentialsForYandex() {
-        data = {
-            "login": user_id.value, 
-            "password": password.value,
-            "client_id": urlParams.get('client_id'),
-            "redirect_uri": urlParams.get('redirect_uri'),
-            "client_id":  urlParams.get('client_id'),
-            "state": urlParams.get('state'),
-            "response_type": "code",
-        };
-
-        const FD = new FormData();
-        for (const [name, value] of Object.entries(data)) {
-            FD.append(name, value);
-        }
-        
-        console.log(urlParams.get('redirect_uri'))
-        console.log(urlParams.get('client_id'))
-        console.log(urlParams.get('scope'))
-
-        let res = await fetch(url + "/code", {
-            method: 'POST',
-            body: FD,
-        })
-        .then(response => console.log(response))
-        //.then(link => window.location.replace(link))
-    }
-</script>
