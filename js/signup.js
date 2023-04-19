@@ -14,9 +14,9 @@ window.onload = function() {
     window.YaAuthSuggest.init({
         client_id: '58b5439db67e41348837a81ee7c2ae58',
            response_type: 'token',
-           redirect_uri: 'http://127.0.0.1:5500/token-redirect.html'
+           redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
         },
-        'http://127.0.0.1:5500', {
+        'https://molchanov-kirill.github.io', {
            view: 'button',
            parentId: 'signup-form',
            buttonView: 'main',
