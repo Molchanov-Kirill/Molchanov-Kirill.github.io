@@ -13,7 +13,7 @@ window.onload = function() {
            response_type: 'token',
            redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
         },
-        'http://194.87.93.190:8080', {
+        'https://0f66-89-223-83-123.ngrok-free.app', {
            view: 'button',
            parentId: 'login-form',
            buttonView: 'main',
