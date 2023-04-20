@@ -11,9 +11,9 @@ window.onload = function() {
     window.YaAuthSuggest.init({
         client_id: '58b5439db67e41348837a81ee7c2ae58',
            response_type: 'token',
-           redirect_uri: 'https://0f66-89-223-83-123.ngrok-free.app'
+           redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
         },
-        'https://0f66-89-223-83-123.ngrok-free.app', {
+        'https://molchanov-kirill.github.io', {
            view: 'button',
            parentId: 'login-form',
            buttonView: 'main',
