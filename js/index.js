@@ -1,5 +1,5 @@
 let login_input, password, data;
-let url = 'https://astartes.takserver.ru';
+let url = 'http://localhost:8080';
 
 const urlParams = new URLSearchParams(window.location.search);
 const responseType = urlParams.get('response_type');
