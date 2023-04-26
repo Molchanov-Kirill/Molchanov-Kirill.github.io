@@ -25,9 +25,6 @@ window.onload = function() {
     .then(result => {
         return result.handler()
     })
-    .then(data => {
-        console.log('Message with token: ', data);
-    })
     .then(tokenMsg => fetch(url + "/oauth/yandex", {
         method: 'POST',
         body: {
