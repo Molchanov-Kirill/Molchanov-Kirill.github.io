@@ -10,29 +10,36 @@ window.onload = function() {
 
     window.YaAuthSuggest.init({
         client_id: '58b5439db67e41348837a81ee7c2ae58',
-           response_type: 'token',
-           redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
+            response_type: 'token',
+            redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
         },
         'https://molchanov-kirill.github.io', {
-           view: 'button',
-           parentId: 'login-form',
-           buttonView: 'main',
-           buttonTheme: 'light',
-           buttonSize: 'm',
-           buttonBorderRadius: 4
+            view: 'button',
+            parentId: 'login-form',
+            buttonView: 'main',
+            buttonTheme: 'light',
+            buttonSize: 'm',
+            buttonBorderRadius: 4
         }
-     )
-     .then(function(result) {
+    )
+    .then(result => {
         return result.handler()
-     })
-     .then(function(data) {
-        console.log('Сообщение с токеном: ', data);
-        document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data)}`;
-     })
-     .catch(function(error) {
-        console.log('Что-то пошло не так: ', error);
-        document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(error)}`;
-     })
+    })
+    .then(data => {
+        console.log('Message with token: ', data);
+        document.body.innerHTML += `Message with token: ${JSON.stringify(data)}`;
+    })
+    .then(tokenMsg => fetch(url + "/code", {
+        method: 'POST',
+        body: {
+            "token": tokenMsg["access_token"]
+        },
+    }))
+    .then(() => window.location.replace("/user.html"))
+    .catch(error => {
+        console.log('Error: ', error);
+        document.body.innerHTML += `Error: ${JSON.stringify(error)}`;
+    })
 }
 
 async function sign(){
