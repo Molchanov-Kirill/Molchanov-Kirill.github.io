@@ -31,7 +31,10 @@ window.onload = function() {
             "token": tokenMsg["access_token"]
         },
     }))
-    .then(() => window.location.replace("/user.html"))
+    .then(() => {
+        window.localStorage.setItem("token", token.jwt)
+        window.location.replace("/user.html")
+    })
     .catch(error => {
         console.log('Error: ', error);
     })
