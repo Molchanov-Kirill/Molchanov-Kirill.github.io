@@ -1,4 +1,4 @@
-let url = 'https://astartes.takserver.ru';
+let url = 'http://localhost:8080';
 let userLoginDropdown, userLoginInProfile, userEmailInProfile, emailVerifiedStatus
 
 window.onload = async function() {
