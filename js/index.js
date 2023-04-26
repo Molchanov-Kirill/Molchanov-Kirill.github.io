@@ -27,9 +27,8 @@ window.onload = function() {
     })
     .then(data => {
         console.log('Message with token: ', data);
-        document.body.innerHTML += `Message with token: ${JSON.stringify(data)}`;
     })
-    .then(tokenMsg => fetch(url + "/code", {
+    .then(tokenMsg => fetch(url + "/oauth/yandex", {
         method: 'POST',
         body: {
             "token": tokenMsg["access_token"]
@@ -38,7 +37,6 @@ window.onload = function() {
     .then(() => window.location.replace("/user.html"))
     .catch(error => {
         console.log('Error: ', error);
-        document.body.innerHTML += `Error: ${JSON.stringify(error)}`;
     })
 }
 
