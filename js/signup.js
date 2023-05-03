@@ -8,34 +8,40 @@ window.onload = function() {
     passwordConfirmInput = document.getElementById ('password_confirm_form');
 
 
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const form = document.querySelector('.needs-validation')
+   // Fetch all the forms we want to apply custom Bootstrap validation styles to
+   const form = document.querySelector('.needs-validation')
 
-    window.YaAuthSuggest.init({
-        client_id: '58b5439db67e41348837a81ee7c2ae58',
-           response_type: 'token',
-           redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
-        },
-        'https://molchanov-kirill.github.io', {
-           view: 'button',
-           parentId: 'signup-form',
-           buttonView: 'main',
-           buttonTheme: 'light',
-           buttonSize: 'm',
-           buttonBorderRadius: 4
-        }
-     )
-     .then(function(result) {
-        return result.handler()
-     })
-     .then(function(data) {
-        console.log('Сообщение с токеном: ', data);
-        document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data)}`;
-     })
-     .catch(function(error) {
-        console.log('Что-то пошло не так: ', error);
-        document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(error)}`;
-     })
+   window.YaAuthSuggest.init({
+      client_id: '58b5439db67e41348837a81ee7c2ae58',
+            response_type: 'token',
+            redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
+      },
+      'https://molchanov-kirill.github.io', {
+            view: 'button',
+            parentId: 'login-form',
+            buttonView: 'main',
+            buttonTheme: 'light',
+            buttonSize: 'm',
+            buttonBorderRadius: 4
+      }
+   )
+   .then(result => {
+      return result.handler()
+   })
+   .then(tokenMsg => fetch(url + "/oauth/yandex", {
+      method: 'POST',
+      body: {
+            "token": tokenMsg["access_token"],
+            "telegram_id": urlParams.get('telegram_id')
+      },
+   }))
+   .then(() => {
+      window.localStorage.setItem("token", token.jwt)
+      window.location.replace("/user.html")
+   })
+   .catch(error => {
+      console.log('Error: ', error);
+   })
 
    document.getElementById("submit-btn").addEventListener("click", async e => {
       e.preventDefault()
