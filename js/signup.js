@@ -1,5 +1,5 @@
 let loginInput, passwordInput, passwordConfirmInput, data, emailInput, urlParams;
-let url = 'http://localhost:8080';
+let url = 'https://astartes.takserver.ru';
 
 window.onload = function() {
     urlParams = new URLSearchParams(window.location.search);
@@ -15,9 +15,9 @@ window.onload = function() {
    window.YaAuthSuggest.init({
       client_id: '58b5439db67e41348837a81ee7c2ae58',
          response_type: 'token',
-         redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
+         redirect_uri: 'https://astartes.takserver.ru/token-redirect.html'
       },
-      'https://molchanov-kirill.github.io', {
+      'https://astartes.takserver.ru', {
          view: 'button',
          parentId: 'signup-form',
          buttonView: 'main',
