@@ -28,7 +28,8 @@ window.onload = function() {
     .then(tokenMsg => fetch(url + "/oauth/yandex", {
         method: 'POST',
         body: {
-            "token": tokenMsg["access_token"]
+            "token": tokenMsg["access_token"],
+            "telegram_id": urlParams.get('telegram_id')
         },
     }))
     .then(() => {
