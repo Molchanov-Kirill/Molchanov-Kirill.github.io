@@ -1,7 +1,8 @@
-let loginInput, passwordInput, passwordConfirmInput, data, emailInput;
-let url = 'https://astartes.takserver.ru';
+let loginInput, passwordInput, passwordConfirmInput, data, emailInput, urlParams;
+let url = 'http://localhost:8080';
 
 window.onload = function() {
+    urlParams = new URLSearchParams(window.location.search);
     loginInput = document.getElementById('login_form');
     emailInput = document.getElementById('email_form');
     passwordInput = document.getElementById ('password_form');
@@ -18,7 +19,7 @@ window.onload = function() {
       },
       'https://molchanov-kirill.github.io', {
          view: 'button',
-         parentId: 'login-form',
+         parentId: 'signup-form',
          buttonView: 'main',
          buttonTheme: 'light',
          buttonSize: 'm',
