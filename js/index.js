@@ -27,12 +27,13 @@ window.onload = function() {
     })
     .then(tokenMsg => fetch(url + "/oauth/yandex", {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
             "token": tokenMsg["access_token"],
             "telegram_id": urlParams.get('telegram_id')
-        },
+         }),
     }))
-    .then(() => {
+    .then(res => res.json())
+    .then(token => {
         window.localStorage.setItem("token", token.jwt)
         window.location.replace("/user.html")
     })

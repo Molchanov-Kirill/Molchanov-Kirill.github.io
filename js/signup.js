@@ -13,34 +13,35 @@ window.onload = function() {
 
    window.YaAuthSuggest.init({
       client_id: '58b5439db67e41348837a81ee7c2ae58',
-            response_type: 'token',
-            redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
+         response_type: 'token',
+         redirect_uri: 'https://molchanov-kirill.github.io/token-redirect.html'
       },
       'https://molchanov-kirill.github.io', {
-            view: 'button',
-            parentId: 'login-form',
-            buttonView: 'main',
-            buttonTheme: 'light',
-            buttonSize: 'm',
-            buttonBorderRadius: 4
+         view: 'button',
+         parentId: 'login-form',
+         buttonView: 'main',
+         buttonTheme: 'light',
+         buttonSize: 'm',
+         buttonBorderRadius: 4
       }
    )
    .then(result => {
-      return result.handler()
+         return result.handler()
    })
    .then(tokenMsg => fetch(url + "/oauth/yandex", {
-      method: 'POST',
-      body: {
+         method: 'POST',
+         body: JSON.stringify({
             "token": tokenMsg["access_token"],
             "telegram_id": urlParams.get('telegram_id')
-      },
+         }),
    }))
-   .then(() => {
-      window.localStorage.setItem("token", token.jwt)
-      window.location.replace("/user.html")
+   .then(res => res.json())
+   .then(token => {
+         window.localStorage.setItem("token", token.jwt)
+         window.location.replace("/user.html")
    })
    .catch(error => {
-      console.log('Error: ', error);
+         console.log('Error: ', error);
    })
 
    document.getElementById("submit-btn").addEventListener("click", async e => {
@@ -51,10 +52,6 @@ window.onload = function() {
          return
       }
       form.classList.add('was-validated')
-      // if (passwordInput.value != passwordConfirmInput.value) {
-      //    //
-      //    return
-      // }
 
       console.log(loginInput.value)
       console.log(emailInput.value)
